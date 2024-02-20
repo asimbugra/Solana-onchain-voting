@@ -6,10 +6,7 @@ This is a simple Rust program built using the `anchor_lang` crate to manage a vo
 
 - [Overview](#overview)
 - [Usage](#usage)
-- [Program Structure](#program-structure)
-- [Accounts](#accounts)
-- [Building and Deploying](#building-and-deploying)
-- [License](#license)
+
 
 ## Overview
 
