@@ -1,12 +1,12 @@
 use anchor_lang::prelude::*;
-declare_id!("HN1a3j162tKR7z8fCAFqxpZLRZQqUYoYgM2Ta13PvySE");
+declare_id!("C4AgY14c5nBhEst5uPJ9t4M6fqb6Hyy5wXUTVNAhaDVx");
 
 #[program]
 pub mod hello_world {
     use super::*;
 
     pub fn init_vote_bank(ctx: Context<InitVote>) -> Result<()> {
-        // Open vote bank for public to vote on our favorite "GM" or "GN"
+        // Open vote bank for public to vote on our favorite "yes" or "no"
         ctx.accounts.vote_account.is_open_to_vote = true;
         Ok(())
     }
@@ -16,11 +16,11 @@ pub mod hello_world {
         match vote_type {
             0 => {
                 msg!("Voted for yes");
-                ctx.accounts.vote_account.gm += 1;
+                ctx.accounts.vote_account.yes += 1;
             }
             1 => {
                 msg!("Voted for no");
-                ctx.accounts.vote_account.gn += 1;
+                ctx.accounts.vote_account.no += 1;
             }
             _ => {
                 msg!("Invalid vote type");
@@ -58,7 +58,7 @@ pub struct GibVote<'info> {
 #[derive(Default)]
 pub struct VoteBank {
     is_open_to_vote: bool,
-    gm: u64,
-    gn: u64,
+    yes: u64,
+    no: u64,
     // total_votes: u64,
 }
